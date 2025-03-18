@@ -45,6 +45,7 @@ export const postQuestionnaire = createAsyncThunk(
       );
       return data;
     } catch (error) {
+      console.log(error);
       return thunkApi.rejectWithValue(error.message);
     }
   }

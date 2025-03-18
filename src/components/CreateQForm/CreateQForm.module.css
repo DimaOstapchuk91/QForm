@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  padding: 64px;
+  border-radius: 24px;
+  background-color: var(--bg-component-dark-green);
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.labelForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputForm {
+  padding: 8px 16px;
+}

@@ -1,4 +1,6 @@
+import CreateQForm from '../../components/CreateQForm/CreateQForm.jsx';
+
 const CreateQuestionnaire = () => {
-  return <div>CreateQuestionnaire</div>;
+  return <CreateQForm />;
 };
 export default CreateQuestionnaire;
