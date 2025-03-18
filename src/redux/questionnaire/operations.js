@@ -13,9 +13,6 @@ export const getQuestionnaires = createAsyncThunk(
       if (params.toString().length > 0) {
         successfullyToast('Questionnaires successfully found');
       }
-      console.log(data.data);
-
-      console.log('test axios');
 
       return data.data;
     } catch (error) {
@@ -31,6 +28,36 @@ export const getQuestionnairesById = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       const { data } = await questionnairesAPI.get(`/questionnaires/${id}`);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const postQuestionnaire = createAsyncThunk(
+  'questionnaires/createQuestionnaire',
+  async (credentials, thunkApi) => {
+    try {
+      const { data } = await questionnairesAPI.post(
+        '/questionnaires',
+        credentials
+      );
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const patchQuestionnaire = createAsyncThunk(
+  'questionnaires/updateQuestionnaire',
+  async ({ id, credentials }, thunkApi) => {
+    try {
+      const { data } = await questionnairesAPI.path(
+        `/questionnaires/${id}`,
+        credentials
+      );
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
