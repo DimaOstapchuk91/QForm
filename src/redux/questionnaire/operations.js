@@ -54,7 +54,7 @@ export const patchQuestionnaire = createAsyncThunk(
   'questionnaires/updateQuestionnaire',
   async ({ id, credentials }, thunkApi) => {
     try {
-      const { data } = await questionnairesAPI.path(
+      const { data } = await questionnairesAPI.patch(
         `/questionnaires/${id}`,
         credentials
       );
