@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Controller, useFieldArray } from 'react-hook-form';
+import s from './OptionsField.module.css';
 
 const OptionsField = ({ control, questionIndex, questionTypes }) => {
   const { fields, append, remove } = useFieldArray({
@@ -16,23 +17,37 @@ const OptionsField = ({ control, questionIndex, questionTypes }) => {
   }, [questionTypes, fields.length, append]);
 
   return (
-    <ul>
-      <label>Options:</label>
+    <ul className={s.optionList}>
       {fields.map((option, optIndex) => (
-        <li key={option.id}>
-          <Controller
-            name={`questions.${questionIndex}.options.${optIndex}`}
-            control={control}
-            render={({ field }) => (
-              <input {...field} placeholder={`Option ${optIndex + 1}`} />
-            )}
-          />
-          <button type='button' onClick={() => remove(optIndex)}>
+        <li className={s.question} key={option.id}>
+          <label className={s.label}>
+            <p className={s.inputName}>Options:</p>
+            <Controller
+              name={`questions.${questionIndex}.options.${optIndex}`}
+              control={control}
+              render={({ field }) => (
+                <input
+                  className={s.inputForm}
+                  {...field}
+                  placeholder={`Option ${optIndex + 1}`}
+                />
+              )}
+            />
+          </label>
+          <button
+            className={s.questionBtnDell}
+            type='button'
+            onClick={() => remove(optIndex)}
+          >
             Remove Option
           </button>
         </li>
       ))}
-      <button type='button' onClick={() => append('')}>
+      <button
+        className={s.questionBtn}
+        type='button'
+        onClick={() => append('')}
+      >
         Add Option
       </button>
     </ul>

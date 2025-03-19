@@ -5,7 +5,6 @@ const CatalogItem = ({ dataItem }) => {
   const navigate = useNavigate();
 
   const { name, description, _id, completions, questions } = dataItem;
-  console.log(dataItem);
 
   return (
     <li

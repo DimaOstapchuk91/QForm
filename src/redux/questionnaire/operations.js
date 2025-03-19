@@ -31,12 +31,16 @@ export const getQuestionnairesById = createAsyncThunk(
 
 export const postQuestionnaire = createAsyncThunk(
   'questionnaires/createQuestionnaire',
-  async (credentials, thunkApi) => {
+  async ({ credentials, navigate }, thunkApi) => {
     try {
       const { data } = await questionnairesAPI.post(
         '/questionnaires',
         credentials
       );
+      if (data.status === 201) {
+        navigate('/questionnaires');
+      }
+      console.log(data);
       successfullyToast('Successfully created');
       return data;
     } catch (error) {

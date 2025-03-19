@@ -1,20 +1,137 @@
 .form {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 64px;
   border-radius: 24px;
-  background-color: var(--bg-component-dark-green);
-  flex-direction: column;
+  background-color: var(--background);
   gap: 24px;
-  max-width: 600px;
-  margin: auto;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.formTitle {
+  font-size: 40px;
+  text-align: center;
 }
 
 .labelForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .inputForm {
+  color: var(--component-gray);
   padding: 8px 16px;
+  border: 1px solid #b1b1b1;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  resize: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.inputFormSelect {
+  color: var(--component-gray);
+  padding: 8px 16px;
+  border: 1px solid #b1b1b1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.inputForm:focus {
+  box-shadow: 0 2px 18px rgba(48, 74, 114, 0.13);
+}
+
+.label {
+  width: 100%;
+}
+
+.inputName {
+  color: var(--component-gray);
+  margin-bottom: 8px;
+}
+
+.questionList {
+  margin-left: 24px;
+  margin-bottom: 40px;
+}
+
+.question {
+  display: inline-flex;
+  align-items: end;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.questionBtn {
+  display: flex;
+  align-items: center;
+  font-family: 'Gilroy', sans-serif;
+  padding: 10px 16px;
+  background-color: rgba(23, 43, 145, 0.5);
+  background-image: linear-gradient(
+    273.87deg,
+    rgba(18, 124, 222, 0.6),
+    #172b91
+  );
+  background-size: 100%;
+  color: var(--background);
+  font-weight: 600;
+  width: fit-content;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out, background-size 0.3s ease-out;
+}
+
+.questionBtn:hover,
+.questionBtn:focus {
+  background-color: #172b91;
+  background-size: 400%;
+}
+
+.questionBtnDell {
+  display: flex;
+  align-items: center;
+  font-family: 'Gilroy', sans-serif;
+  padding: 10px 16px;
+  background-image: linear-gradient(96.22deg, #f66f27 -3.41%, #ee3361 95.05%);
+  color: var(--background);
+  font-weight: 600;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+}
+
+.questionBtnDell:hover {
+  color: #172b91;
+}
+
+.submitWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  font-family: 'Gilroy', sans-serif;
+  padding: 20px 40px;
+  background-color: rgba(23, 43, 145, 0.5);
+  background-image: linear-gradient(
+    273.87deg,
+    rgba(18, 124, 222, 0.6),
+    #172b91
+  );
+  background-size: 100%;
+  color: var(--background);
+  font-size: 18px;
+  font-weight: 600;
+  width: fit-content;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out, background-size 0.3s ease-out;
 }

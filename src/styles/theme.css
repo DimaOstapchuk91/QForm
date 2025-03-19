@@ -3,6 +3,7 @@
   --bg-contrast: #f8f9fa;
   --component-blue: #127cde;
   --component-dark-blue: rgba(23, 43, 145, 0.8);
+  --component-gray: #4a5560;
   --bg-component-gradient: linear-gradient(
     274deg,
     #127cde 6.34%,
