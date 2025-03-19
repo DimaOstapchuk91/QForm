@@ -31,10 +31,9 @@ const CreateQForm = () => {
     name: 'questions',
   });
 
-  // Отримуємо всі значення questionType через useWatch
   const questionTypes = useWatch({
     control,
-    name: 'questions', // Отримуємо весь масив питань
+    name: 'questions',
   });
   console.log('test1:', questionTypes);
 
@@ -91,7 +90,6 @@ const CreateQForm = () => {
               Delete
             </button>
 
-            {/* Використовуємо questionTypes для перевірки, чи потрібно відображати OptionsField */}
             {(questionTypes?.[index]?.questionType === 'radio' ||
               questionTypes?.[index]?.questionType === 'checkbox') && (
               <OptionsField

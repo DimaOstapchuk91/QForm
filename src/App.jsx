@@ -2,10 +2,11 @@ import Layout from './components/Layout/Layout.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import QuestionnairesListPage from './pages/QuestionnairesListPage/QuestionnairesListPage.jsx';
+
 import FillQuestionnaire from './pages/FillQuestionnaire/FillQuestionnaire.jsx';
 import CreateQuestionnaire from './pages/CreateQuestionnaire/CreateQuestionnaire.jsx';
 import EditQuestionnaire from './pages/EditQuestionnaire/EditQuestionnaire.jsx';
+import CatalogQPage from './pages/CatalogQPage/CatalogQPage.jsx';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/questionnaire' element={<QuestionnairesListPage />} />
+          <Route path='/questionnaires' element={<CatalogQPage />} />
           <Route path='/questionnaire/:id' element={<FillQuestionnaire />} />
 
           <Route

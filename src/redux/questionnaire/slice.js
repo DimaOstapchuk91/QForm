@@ -22,7 +22,7 @@ const questionnairesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getQuestionnaires.fulfilled, (state, action) => {
-        state.oneQuestionnaire = action.payload;
+        state.questionnaires = action.payload;
       })
       .addCase(getQuestionnaires.rejected, (state, action) => {
         state.isLoading = false;

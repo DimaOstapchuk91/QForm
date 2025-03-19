@@ -26,7 +26,7 @@ const persistedQuestionnairesReducer = persistReducer(
 
 export const store = configureStore({
   reducer: {
-    campers: persistedQuestionnairesReducer,
+    questionnaires: persistedQuestionnairesReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -4,16 +4,15 @@ import { questionnairesAPI } from '../config/axiosConfig.js';
 
 export const getQuestionnaires = createAsyncThunk(
   'questionnaires/fetchAll',
-  async ({ params, page }, thunkApi) => {
+  async (_, thunkApi) => {
     try {
-      const { data } = await questionnairesAPI.get(
-        `/questionnaires?${params}&limit=4&page=${page}`
-      );
+      const { data } = await questionnairesAPI.get(`/questionnaires`);
 
-      if (params.toString().length > 0) {
-        successfullyToast('Questionnaires successfully found');
-      }
+      // if (params.toString().length > 0) {
+      //   successfullyToast('Questionnaires successfully found');
+      // }
 
+      // console.log(data.data);
       return data.data;
     } catch (error) {
       errToast("sorry, we don't have such a Questionnaires");
