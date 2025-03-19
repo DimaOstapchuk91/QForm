@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { errToast, successfullyToast } from '../../utils/toast.js';
+import { errToast } from '../../utils/toast.js';
 import { questionnairesAPI } from '../config/axiosConfig.js';
 
 export const getQuestionnaires = createAsyncThunk(
@@ -8,11 +8,6 @@ export const getQuestionnaires = createAsyncThunk(
     try {
       const { data } = await questionnairesAPI.get(`/questionnaires`);
 
-      // if (params.toString().length > 0) {
-      //   successfullyToast('Questionnaires successfully found');
-      // }
-
-      // console.log(data.data);
       return data.data;
     } catch (error) {
       errToast("sorry, we don't have such a Questionnaires");
@@ -58,6 +53,19 @@ export const patchQuestionnaire = createAsyncThunk(
         `/questionnaires/${id}`,
         credentials
       );
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const postAnswer = createAsyncThunk(
+  'questionnaires/answer',
+  async (answer, thunkApi) => {
+    try {
+      const { data } = await questionnairesAPI.post('/answer', answer);
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
