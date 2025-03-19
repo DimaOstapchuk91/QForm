@@ -1,0 +1,42 @@
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-right: 14px;
+  background-color: var(--bg-component-white);
+  border-radius: 10px;
+}
+
+.userName {
+  margin-right: 24px;
+  color: var(--text-color-white);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.18px;
+}
+
+.logoutBtn {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.16px;
+  padding: 14px 40px;
+  background-color: transparent;
+  color: var(--text-color-white);
+  border-radius: 30px;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  transition: border-color 300ms ease;
+  cursor: pointer;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus {
+  border-color: rgba(251, 251, 251, 0.8);
+}

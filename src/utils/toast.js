@@ -6,8 +6,8 @@ export const errToast = message => {
     position: 'top-right',
     style: {
       borderRadius: '12px',
-      background: '#ffe6e6',
-      color: '#d32f2f',
+      background: 'var(--bg-contrast)',
+      color: 'var(--text-color)',
       border: '1px solid #d32f2f',
       boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
       padding: '12px 16px',
@@ -22,9 +22,9 @@ export const successfullyToast = message => {
     position: 'top-right',
     style: {
       borderRadius: '12px',
-      background: '#e6ffe6',
-      color: '#388e3c',
-      border: '1px solid #388e3c',
+      background: 'var(--bg-contrast)',
+      color: 'var(--text-color)',
+      border: '1px solid var(--component-blue)',
       boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
       padding: '12px 16px',
     },

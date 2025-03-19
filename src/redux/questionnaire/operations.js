@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { errToast } from '../../utils/toast.js';
+import { errToast, successfullyToast } from '../../utils/toast.js';
 import { questionnairesAPI } from '../config/axiosConfig.js';
 
 export const getQuestionnaires = createAsyncThunk(
@@ -37,9 +37,10 @@ export const postQuestionnaire = createAsyncThunk(
         '/questionnaires',
         credentials
       );
+      successfullyToast('Successfully created');
       return data;
     } catch (error) {
-      console.log(error);
+      errToast('Sorry, mistake');
       return thunkApi.rejectWithValue(error.message);
     }
   }

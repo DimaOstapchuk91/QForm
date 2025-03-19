@@ -20,8 +20,8 @@ const CreateQForm = () => {
       name: '',
       description: '',
       questions: [
-        { questionText: '', questionType: 'text', options: [''] },
-        { questionText: '', questionType: 'text', options: [''] },
+        { questionText: '', questionType: 'text' },
+        { questionText: '', questionType: 'text' },
       ],
     },
   });
@@ -104,9 +104,7 @@ const CreateQForm = () => {
 
       <button
         type='button'
-        onClick={() =>
-          append({ questionText: '', questionType: 'text', options: [''] })
-        }
+        onClick={() => append({ questionText: '', questionType: 'text' })}
       >
         Add Another Question
       </button>

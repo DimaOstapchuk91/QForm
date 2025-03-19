@@ -10,9 +10,9 @@ html {
 }
 
 body {
-  font-family: 'Helvetica Neue', sans-serif;
-  color: var(--text-color-black);
-  background-color: var(--background-page);
+  font-family: 'Gilroy', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-contrast);
 }
 
 h1,

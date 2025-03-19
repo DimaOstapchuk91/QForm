@@ -10,9 +10,14 @@ export const questionnaireCreateSchema = Yup.object().shape({
         questionType: Yup.string()
           .oneOf(['text', 'radio', 'checkbox'])
           .required('Question type is required'),
-        options: Yup.array()
-          .of(Yup.string().required('Option is required'))
-          .min(1, 'At least one option is required'),
+        options: Yup.array().when('questionType', {
+          is: val => val === 'radio' || val === 'checkbox',
+          then: schema =>
+            schema
+              .of(Yup.string().required('Option is required'))
+              .min(1, 'At least one option is required'),
+          otherwise: schema => schema.notRequired(),
+        }),
       })
     )
     .min(1, 'At least one question is required'),

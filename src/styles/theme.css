@@ -1,14 +1,41 @@
 :root {
-  --background-white: #ffffff;
-  --bg-btn-dark-gray: #323f47;
-  --bg-component-gray: #f0eff4;
-  --bg-component-green: #9be1a0;
-  --bg-component-dark-green: #87d28d;
-  --dark-gray-calendar: rgba(50, 63, 71, 0.2);
-  --text-color: #323f47;
-  --input-red: #ef5050;
-  --black: #2f2f2f;
-  --modal-backdrop: rgba(47, 47, 47, 0.6);
-  --menu-backdrop-color-light: rgba(50, 63, 71, 0.4);
-  transition: background-color 500ms ease;
+  --background: #ffffff;
+  --bg-contrast: #f8f9fa;
+  --component-blue: #127cde;
+  --component-dark-blue: rgba(23, 43, 145, 0.8);
+  --bg-component-gradient: linear-gradient(
+    274deg,
+    #127cde 6.34%,
+    #172b91 86.55%
+  );
+
+  --text-color: #101828;
+
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* .gradient {
+  background: linear-gradient(274deg, #127cde 6.34%, #172b91 86.55%);
+  background-color: rgba(23, 43, 145, 0.5);
+  font-size: 16px;
+  height: 56px;
+  padding: 20px 38px;
+  font-family: Gilroy, sans-serif;
+}
+
+.home {
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 540px;
+  padding: max(40px, min(8vw, 120px)) max(24px, min(8vw, 200px))
+    max(40px, min(8vw, 120px)) max(24px, min(8vw, 110px));
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.component {
+  --contrast-color: #f8f9fa;
+  background: #fff;
+  color: #127cde;
+} */

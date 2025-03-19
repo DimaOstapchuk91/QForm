@@ -1,0 +1,19 @@
+.navList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 32px;
+}
+
+.navLink {
+  color: var(--text-color-white);
+  line-height: 20px;
+  letter-spacing: -0.16px;
+  transition: color 0.15s ease-in-out;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: var(--component-blue);
+}

@@ -1,0 +1,39 @@
+.catalofWrap {
+  padding: 40px;
+}
+
+.catalogHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.catalogTitle {
+  font-size: 40px;
+}
+
+.catalogLink {
+  display: flex;
+  align-items: center;
+  font-family: 'Gilroy', sans-serif;
+  background-color: rgba(23, 43, 145, 0.5);
+  background-image: linear-gradient(
+    273.87deg,
+    rgba(18, 124, 222, 0.6),
+    #172b91
+  );
+  background-size: 100%;
+  color: var(--background);
+  font-weight: 600;
+  font-size: 16px;
+  height: 56px;
+  padding: 20px 38px;
+  border-radius: 200px;
+  transition: background-color 0.3s ease-out, background-size 0.3s ease-out;
+}
+
+.catalogLink:hover,
+.catalogLink:focus {
+  background-color: #172b91;
+  background-size: 400%;
+}

@@ -1,0 +1,20 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Gilroy';
+  font-weight: 400;
+  src: url('../assets/fonts/Gilroy-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Gilroy';
+  font-weight: 500;
+  src: url('../assets/fonts/Gilroy-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Gilroy';
+  font-weight: 700;
+  src: url('../assets/fonts/Gilroy-Bold.woff2') format('woff2');
+}

@@ -18,7 +18,7 @@ function App() {
           <Route path='/questionnaire/:id' element={<FillQuestionnaire />} />
 
           <Route
-            path='/questionnaires/create'
+            path='/questionnaire/create'
             element={<CreateQuestionnaire />}
           />
           <Route
