@@ -1,0 +1,27 @@
+.pageWrap {
+  padding: 30px;
+}
+
+.homeWrap {
+  background: linear-gradient(288deg, #05f 1.5%, #043873 91.6%);
+  border-radius: 40px;
+  min-height: 540px;
+  padding: max(40px, min(8vw, 120px)) max(24px, min(8vw, 200px))
+    max(40px, min(8vw, 120px)) max(24px, min(8vw, 110px));
+}
+
+.homeTitle {
+  font-size: 58px;
+  color: var(--background);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.3;
+  margin-bottom: 44px;
+}
+
+.homeText {
+  color: var(--background);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 150%;
+}

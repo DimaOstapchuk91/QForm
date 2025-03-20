@@ -7,6 +7,7 @@ import FillQuestionnaire from './pages/FillQuestionnaire/FillQuestionnaire.jsx';
 import CreateQuestionnaire from './pages/CreateQuestionnaire/CreateQuestionnaire.jsx';
 import EditQuestionnaire from './pages/EditQuestionnaire/EditQuestionnaire.jsx';
 import CatalogQPage from './pages/CatalogQPage/CatalogQPage.jsx';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             path='/questionnaire/:id/edit'
             element={<EditQuestionnaire />}
           />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
         <Toaster />
       </Layout>
