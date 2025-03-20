@@ -1,0 +1,125 @@
+.form {
+  background-color: var(--background);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px;
+  border-radius: 24px;
+}
+
+.formTitle {
+  text-align: center;
+  color: var(--component-blue);
+  font-size: 40px;
+  margin-bottom: 24px;
+}
+
+.formDescription {
+  text-align: center;
+  font-size: 24px;
+
+  margin-bottom: 24px;
+}
+
+.questionsWrap {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: var(--bg-contrast);
+  margin-bottom: 24px;
+}
+
+.questionText {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.answerQuestionText {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.answerList {
+  margin-bottom: 24px;
+}
+
+.answerText {
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: var(--bg-contrast);
+  margin-left: 24px;
+  margin-bottom: 8px;
+}
+
+.time {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--component-blue);
+}
+
+.inputText {
+  color: var(--component-gray);
+  padding: 8px 16px;
+  border: 1px solid #b1b1b1;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  resize: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.inputText:focus {
+  box-shadow: 0 2px 18px rgba(48, 74, 114, 0.13);
+}
+
+.questionRadio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.radioInput {
+  margin-right: 10px;
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.questionBtn {
+  display: flex;
+  align-items: center;
+  font-family: 'Gilroy', sans-serif;
+  padding: 14px 36px;
+  background-color: rgba(23, 43, 145, 0.5);
+  background-image: linear-gradient(
+    273.87deg,
+    rgba(18, 124, 222, 0.6),
+    #172b91
+  );
+  background-size: 100%;
+  color: var(--background);
+  font-weight: 600;
+  width: fit-content;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out, background-size 0.3s ease-out;
+}
+
+.questionBtn:hover,
+.questionBtn:focus {
+  background-color: #172b91;
+  background-size: 400%;
+}
+button:disabled:hover {
+  background-color: rgba(23, 43, 145, 0.5);
+  background-size: 100%;
+}
+
+.questionBtn:disabled {
+  cursor: default;
+  opacity: 0.5;
+}

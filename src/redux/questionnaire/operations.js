@@ -22,7 +22,7 @@ export const getQuestionnairesById = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       const { data } = await questionnairesAPI.get(`/questionnaires/${id}`);
-      return data;
+      return data.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -40,7 +40,6 @@ export const postQuestionnaire = createAsyncThunk(
       if (data.status === 201) {
         navigate('/questionnaires');
       }
-      console.log(data);
       successfullyToast('Successfully created');
       return data;
     } catch (error) {
@@ -52,12 +51,17 @@ export const postQuestionnaire = createAsyncThunk(
 
 export const patchQuestionnaire = createAsyncThunk(
   'questionnaires/updateQuestionnaire',
-  async ({ id, credentials }, thunkApi) => {
+  async ({ id, credentials, navigate }, thunkApi) => {
     try {
       const { data } = await questionnairesAPI.patch(
         `/questionnaires/${id}`,
         credentials
       );
+
+      if (data.status === 201) {
+        navigate('/questionnaires');
+      }
+      successfullyToast('Successfully update');
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -71,6 +75,19 @@ export const postAnswer = createAsyncThunk(
     try {
       const { data } = await questionnairesAPI.post('/answer', answer);
 
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteQuestionnaires = createAsyncThunk(
+  'questionnaires/deletetQuestionnaires',
+  async (id, thunkApi) => {
+    try {
+      const { data } = await questionnairesAPI.delete(`/questionnaires/${id}`);
+      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

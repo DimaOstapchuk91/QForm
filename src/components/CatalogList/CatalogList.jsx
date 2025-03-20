@@ -13,7 +13,6 @@ const CatalogList = () => {
   }, [dispatch]);
 
   const catalogData = useSelector(selectQuestionnaires);
-  console.log(catalogData);
 
   return (
     <ul className={s.catalogList}>

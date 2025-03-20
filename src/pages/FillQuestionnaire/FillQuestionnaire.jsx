@@ -1,15 +1,26 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Questionnaire from '../../components/Questionnaire/Questionnaire.jsx';
+import s from './FillQuestionnaire.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getQuestionnairesById } from '../../redux/questionnaire/operations.js';
+import { selectOneoneQuestionnaire } from '../../redux/questionnaire/selectors.js';
 
 const FillQuestionnaire = () => {
-  const location = useLocation();
-  const dataItem = location.state?.dataItem;
+  const { id } = useParams();
 
-  if (!dataItem) return <p>Sorry, an error occurred.</p>;
+  const dataItem = useSelector(selectOneoneQuestionnaire);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getQuestionnairesById(id));
+  }, []);
 
   return (
     <section className='container'>
-      <Questionnaire dataItem={dataItem} />
+      <div className={s.pageWrap}>
+        <Questionnaire dataItem={dataItem} />
+      </div>
     </section>
   );
 };

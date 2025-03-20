@@ -22,3 +22,19 @@ export const questionnaireCreateSchema = Yup.object().shape({
     )
     .min(1, 'At least one question is required'),
 });
+
+export const schemaAnswer = Yup.object().shape({
+  answers: Yup.lazy(obj =>
+    Yup.object(
+      Object.keys(obj || {}).reduce((acc, key) => {
+        acc[key] = Yup.mixed().test('is-valid', 'Fill in this field', value => {
+          if (Array.isArray(value)) {
+            return value.length > 0;
+          }
+          return Boolean(value);
+        });
+        return acc;
+      }, {})
+    )
+  ),
+});

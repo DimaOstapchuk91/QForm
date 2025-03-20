@@ -1,0 +1,77 @@
+.modalWrapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  padding: 40px;
+  width: 516px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  text-align: center;
+}
+
+.titleDelete {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.textDelete {
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 24px;
+
+  letter-spacing: -0.01em;
+}
+
+.wrappBtn {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.btnDelete,
+.btnCancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 100%;
+  font-weight: 700;
+  padding: 10px 16px;
+  font-size: 14px;
+  background-size: 100%;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: var(--background);
+  border: none;
+  cursor: pointer;
+  transition: color 250ms ease-in, background-color 250ms ease-in;
+}
+
+.btnDelete {
+  background-image: linear-gradient(96.22deg, #f66f27 -3.41%, #ee3361 95.05%);
+}
+
+.btnDelete:hover,
+.btnDelete:focus {
+  color: #172b91;
+}
+
+.btnCancel {
+  background-color: rgba(23, 43, 145, 0.5);
+  background-image: linear-gradient(
+    273.87deg,
+    rgba(18, 124, 222, 0.6),
+    #172b91
+  );
+  background-size: 100%;
+}
+
+.btnCancel:hover,
+.btnCancel:focus {
+  background-color: #172b91;
+  background-size: 400%;
+}

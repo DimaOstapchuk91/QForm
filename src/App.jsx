@@ -22,7 +22,7 @@ function App() {
             element={<CreateQuestionnaire />}
           />
           <Route
-            path='/questionnaires/:id/edit'
+            path='/questionnaire/:id/edit'
             element={<EditQuestionnaire />}
           />
         </Routes>

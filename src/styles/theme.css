@@ -10,33 +10,9 @@
     #172b91 86.55%
   );
 
+  --modal-backdrop: rgba(23, 43, 145, 0.2);
+
   --text-color: #101828;
 
   transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* .gradient {
-  background: linear-gradient(274deg, #127cde 6.34%, #172b91 86.55%);
-  background-color: rgba(23, 43, 145, 0.5);
-  font-size: 16px;
-  height: 56px;
-  padding: 20px 38px;
-  font-family: Gilroy, sans-serif;
-}
-
-.home {
-  border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  min-height: 540px;
-  padding: max(40px, min(8vw, 120px)) max(24px, min(8vw, 200px))
-    max(40px, min(8vw, 120px)) max(24px, min(8vw, 110px));
-  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.component {
-  --contrast-color: #f8f9fa;
-  background: #fff;
-  color: #127cde;
-} */
