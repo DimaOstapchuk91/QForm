@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getQuestionnairesById } from '../../redux/questionnaire/operations.js';
 import { useEffect } from 'react';
 import { selectOneoneQuestionnaire } from '../../redux/questionnaire/selectors.js';
+import s from './EditQuestionnaire.module.css';
 
 const EditQuestionnaire = () => {
   const { id } = useParams();
@@ -16,7 +17,9 @@ const EditQuestionnaire = () => {
 
   return (
     <section className='container'>
-      <EditForm dataItem={dataItem} />
+      <div className={s.pageWrap}>
+        <EditForm dataItem={dataItem} />
+      </div>
     </section>
   );
 };

@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getQuestionnaires, getQuestionnairesById } from './operations.js';
+import {
+  deleteQuestionnaires,
+  getQuestionnaires,
+  getQuestionnairesById,
+} from './operations.js';
 
 const initialState = {
   questionnaires: [],
@@ -69,6 +73,12 @@ const questionnairesSlice = createSlice({
       .addCase(getQuestionnairesById.rejected, state => {
         state.isLoading = false;
         state.error = true;
+      })
+      .addCase(deleteQuestionnaires.fulfilled, (state, action) => {
+        state.questionnaires = state.questionnaires.filter(
+          item => item._id !== action.payload
+        );
+        state.isLoading = false;
       });
   },
 });

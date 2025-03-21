@@ -10,9 +10,8 @@ export const getQuestionnaires = createAsyncThunk(
   ) => {
     try {
       const { data } = await questionnairesAPI.get(
-        `/questionnaires?page=${page}&perPage=${perPage}&sortBy${sortBy}&sortOrder${sortOrder}`
+        `/questionnaires?page=${page}&perPage=${perPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`
       );
-      console.log(data);
 
       return data.data;
     } catch (error) {
@@ -94,7 +93,7 @@ export const deleteQuestionnaires = createAsyncThunk(
     try {
       const { data } = await questionnairesAPI.delete(`/questionnaires/${id}`);
       console.log(data);
-      return data;
+      return data.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

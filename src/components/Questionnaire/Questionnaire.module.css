@@ -57,6 +57,7 @@
   text-align: center;
   font-weight: 500;
   color: var(--component-blue);
+  margin-bottom: 40px;
 }
 
 .inputText {

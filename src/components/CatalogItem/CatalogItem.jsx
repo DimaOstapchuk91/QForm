@@ -18,35 +18,39 @@ const CatalogItem = ({ dataItem }) => {
 
   return (
     <li className={s.catalogItem}>
-      <div className={s.itemHeaderWrap}>
-        <h3 className={s.itemTitle}>
-          {name.charAt(0).toUpperCase() + name.slice(1)}
-        </h3>
-        <div className={s.changeItem}>
-          <NavLink className={s.editBtn} to={`/questionnaire/${_id}/edit`}>
-            Edit
-          </NavLink>
-          <button className={s.dellBtn} type='button' onClick={handleIsOpen}>
-            Dell
-          </button>
+      <div>
+        <div className={s.itemHeaderWrap}>
+          <h3 className={s.itemTitle}>
+            {name.charAt(0).toUpperCase() + name.slice(1)}
+          </h3>
+          <div className={s.changeItem}>
+            <NavLink className={s.editBtn} to={`/questionnaire/${_id}/edit`}>
+              Edit
+            </NavLink>
+            <button className={s.dellBtn} type='button' onClick={handleIsOpen}>
+              Dell
+            </button>
+          </div>
         </div>
-      </div>
-      <p className={s.itemDescription}>
-        {description.charAt(0).toUpperCase() + name.slice(1)}
-      </p>
-      <div className={s.itemInfo}>
-        <p className={s.itemInfotext}>
-          Questions:{''}
-          <span>{` ${questions.length}`}</span>
-        </p>
-        <p className={s.itemInfotext}>
-          Passed:<span>{` ${completions}`}</span>
+        <p className={s.itemDescription}>
+          {description.charAt(0).toUpperCase() + description.slice(1)}
         </p>
       </div>
-      <div className={s.linkWrap}>
-        <NavLink className={s.startBtn} to={`/questionnaire/${_id}`}>
-          Start
-        </NavLink>
+      <div>
+        <div className={s.itemInfo}>
+          <p className={s.itemInfotext}>
+            Questions:{''}
+            <span>{` ${questions.length}`}</span>
+          </p>
+          <p className={s.itemInfotext}>
+            Passed:<span>{` ${completions}`}</span>
+          </p>
+        </div>
+        <div className={s.linkWrap}>
+          <NavLink className={s.startBtn} to={`/questionnaire/${_id}`}>
+            Start
+          </NavLink>
+        </div>
       </div>
       <Modal isOpen={isModalOpen} onClose={handleIsClose}>
         <DeleteQuestionnaireModal

@@ -28,6 +28,8 @@
   width: 100%;
   outline: none;
   resize: none;
+
+  pointer-events: auto;
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -37,6 +39,8 @@
   border: 1px solid #b1b1b1;
   border-radius: 8px;
   outline: none;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .inputForm:focus {
@@ -50,6 +54,10 @@
 .inputName {
   color: var(--component-gray);
   margin-bottom: 8px;
+}
+
+.questionWrap {
+  cursor: grab;
 }
 
 .questionList {

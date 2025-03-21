@@ -5,7 +5,7 @@
 .catalogHeader {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .catalogTitle {
@@ -26,7 +26,7 @@
   color: var(--background);
   font-weight: 600;
   font-size: 16px;
-  height: 56px;
+  height: 46px;
   padding: 20px 38px;
   border-radius: 200px;
   transition: background-color 0.3s ease-out, background-size 0.3s ease-out;

@@ -63,7 +63,7 @@ const EditForm = ({ dataItem }) => {
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={s.formTitle}>Edit Questionnaire</h2>
 
-      <label className={s.labelForm} htmlFor='name'>
+      <label className={s.labelForm}>
         <p className={s.inputName}>Questionnaire Name:</p>
         <Controller
           name='name'
@@ -73,7 +73,7 @@ const EditForm = ({ dataItem }) => {
         {errors.name && <p>{errors.name.message}</p>}
       </label>
 
-      <label className={s.labelForm} htmlFor='description'>
+      <label className={s.labelForm}>
         <p className={s.inputName}>Description:</p>
         <Controller
           name='description'

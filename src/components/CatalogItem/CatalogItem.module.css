@@ -1,8 +1,12 @@
 .catalogItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: calc((100% - 48px) / 3);
   padding: 20px;
   background-color: var(--background);
   border-radius: 24px;
+  min-height: 280px;
   transition: box-shadow 0.3s ease-in-out;
   box-shadow: 0 2px 18px rgba(48, 74, 114, 0.13);
 }
@@ -20,10 +24,6 @@
 .itemTitle {
   margin-bottom: 16px;
   color: var(--component-blue);
-}
-
-.itemDescription {
-  margin-bottom: 40px;
 }
 
 .itemInfo {

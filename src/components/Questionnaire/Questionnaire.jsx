@@ -1,10 +1,11 @@
 import { Controller, useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postAnswer } from '../../redux/questionnaire/operations.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import s from './Questionnaire.module.css';
 import { schemaAnswer } from '../../utils/validations.js';
+import { NavLink } from 'react-router-dom';
 
 const Questionnaire = ({ dataItem }) => {
   const { name, description, questions, _id } = dataItem;
@@ -17,7 +18,7 @@ const Questionnaire = ({ dataItem }) => {
   const {
     control,
     handleSubmit,
-
+    setValue,
     formState: { errors, isValid },
     watch,
   } = useForm({
@@ -48,7 +49,11 @@ const Questionnaire = ({ dataItem }) => {
   const currentQuestion = questions[step];
   const currentAnswer = watch(`answers.${currentQuestion._id}`);
 
-  console.log(currentAnswer);
+  useEffect(() => {
+    if (currentQuestion.questionType === 'text' && !showResults) {
+      setValue(`answers.${currentQuestion._id}`, '');
+    }
+  }, [step, setValue, currentQuestion, showResults]);
 
   const isNextDisabled =
     currentQuestion.questionType === 'checkbox'
@@ -81,6 +86,12 @@ const Questionnaire = ({ dataItem }) => {
             )}m 
             ${Math.floor(((Date.now() - startTime) / 1000) % 60)}s`}
           </p>
+
+          <div className={s.btnWrap}>
+            <NavLink className={s.questionBtn} to='/questionnaires'>
+              Back Catalog
+            </NavLink>
+          </div>
         </div>
       ) : (
         <>
