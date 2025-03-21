@@ -6,18 +6,32 @@ const AppNav = () => {
     <nav>
       <ul className={s.navList}>
         <li>
-          <NavLink className={s.navLink} to='/'>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.active}` : s.navLink
+            }
+          >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink className={s.navLink} to='/questionnaires'>
+          <NavLink
+            to='/questionnaires'
+            className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.active}` : s.navLink
+            }
+          >
             Catalog
           </NavLink>
         </li>
-
         <li>
-          <NavLink className={s.navLink} to='/questionnaire/create'>
+          <NavLink
+            to='/questionnaire/create'
+            className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.active}` : s.navLink
+            }
+          >
             Create
           </NavLink>
         </li>
@@ -25,4 +39,5 @@ const AppNav = () => {
     </nav>
   );
 };
+
 export default AppNav;

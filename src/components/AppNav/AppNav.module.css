@@ -17,3 +17,7 @@
 .navLink:focus {
   color: var(--component-blue);
 }
+
+.active {
+  color: var(--component-blue);
+}

@@ -4,9 +4,15 @@ import { questionnairesAPI } from '../config/axiosConfig.js';
 
 export const getQuestionnaires = createAsyncThunk(
   'questionnaires/fetchAll',
-  async (_, thunkApi) => {
+  async (
+    { page = 1, perPage = 6, sortBy = 'createdAt', sortOrder = 'asc' },
+    thunkApi
+  ) => {
     try {
-      const { data } = await questionnairesAPI.get(`/questionnaires`);
+      const { data } = await questionnairesAPI.get(
+        `/questionnaires?page=${page}&perPage=${perPage}&sortBy${sortBy}&sortOrder${sortOrder}`
+      );
+      console.log(data);
 
       return data.data;
     } catch (error) {
