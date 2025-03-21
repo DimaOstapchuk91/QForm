@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import s from './Questionnaire.module.css';
 import { schemaAnswer } from '../../utils/validations.js';
 import { NavLink } from 'react-router-dom';
+import { clearState } from '../../redux/questionnaire/slice.js';
 
 const Questionnaire = ({ dataItem }) => {
   const { name, description, questions, _id } = dataItem;
@@ -56,6 +57,10 @@ const Questionnaire = ({ dataItem }) => {
       ? currentAnswer?.length === 0
       : !currentAnswer;
 
+  const handleExit = () => {
+    dispatch(clearState());
+  };
+
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       {showResults ? (
@@ -84,7 +89,11 @@ const Questionnaire = ({ dataItem }) => {
           </p>
 
           <div className={s.btnWrap}>
-            <NavLink className={s.questionBtn} to='/questionnaires'>
+            <NavLink
+              onClick={handleExit}
+              className={s.questionBtn}
+              to='/questionnaires'
+            >
               Back Catalog
             </NavLink>
           </div>

@@ -31,6 +31,11 @@ const questionnairesSlice = createSlice({
         state.pagination.page = newPage;
       }
     },
+    clearState: state => {
+      state.oneQuestionnaire = false;
+      state.isLoading = false;
+      state.error = false;
+    },
   },
   extraReducers: builder => {
     builder
@@ -83,6 +88,6 @@ const questionnairesSlice = createSlice({
   },
 });
 
-export const { setPage } = questionnairesSlice.actions;
+export const { setPage, clearState } = questionnairesSlice.actions;
 
 export const questionnairesReduser = questionnairesSlice.reducer;
