@@ -35,10 +35,6 @@ const Questionnaire = ({ dataItem }) => {
   });
 
   const onSubmit = data => {
-    // const endTime = Date.now();
-    // const timeSpent = ((endTime - startTime) / 1000).toFixed(2);
-
-    console.log(data);
     dispatch(postAnswer({ questionnaireId: _id, answers: data.answers }));
 
     setAnswers(data.answers);

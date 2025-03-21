@@ -27,7 +27,6 @@ export const getQuestionnairesById = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       const { data } = await questionnairesAPI.get(`/questionnaires/${id}`);
-      console.log(data);
       return data.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
