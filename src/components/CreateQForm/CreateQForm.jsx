@@ -10,7 +10,6 @@ import {
   closestCenter,
   DndContext,
   KeyboardSensor,
-  MouseSensor,
   PointerSensor,
   useSensor,
   useSensors,

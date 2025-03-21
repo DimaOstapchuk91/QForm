@@ -3,12 +3,12 @@ import EditForm from '../../components/EditForm/EditForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestionnairesById } from '../../redux/questionnaire/operations.js';
 import { useEffect } from 'react';
-import { selectOneoneQuestionnaire } from '../../redux/questionnaire/selectors.js';
+import { selectOneQuestionnaire } from '../../redux/questionnaire/selectors.js';
 import s from './EditQuestionnaire.module.css';
 
 const EditQuestionnaire = () => {
   const { id } = useParams();
-  const dataItem = useSelector(selectOneoneQuestionnaire);
+  const dataItem = useSelector(selectOneQuestionnaire);
   const dispatch = useDispatch();
 
   useEffect(() => {

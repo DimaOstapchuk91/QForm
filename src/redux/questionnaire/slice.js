@@ -7,7 +7,6 @@ import {
 
 const initialState = {
   questionnaires: [],
-  oneQuestionnaire: {},
   total: 0,
   pagination: {
     page: 1,
@@ -17,6 +16,7 @@ const initialState = {
     hasNextPage: false,
     hasPreviousPage: false,
   },
+  oneQuestionnaire: false,
   isLoading: false,
   error: false,
 };
