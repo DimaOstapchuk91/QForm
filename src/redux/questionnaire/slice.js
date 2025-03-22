@@ -44,6 +44,7 @@ const questionnairesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getQuestionnaires.fulfilled, (state, action) => {
+        state.isLoading = false;
         const {
           data,
           page,

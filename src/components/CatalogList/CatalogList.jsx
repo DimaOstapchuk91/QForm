@@ -4,10 +4,12 @@ import { getQuestionnaires } from '../../redux/questionnaire/operations.js';
 import {
   selectQuestionnaires,
   selectIsPagination,
+  selectIsLoading,
 } from '../../redux/questionnaire/selectors.js';
 import CatalogItem from '../CatalogItem/CatalogItem.jsx';
 import PaginationControls from '../PaginationControls/PaginationControls.jsx';
 import s from './CatalogList.module.css';
+import Loader from '../Loader/Loader.jsx';
 
 const sortOptions = [
   { value: 'name', label: 'Name' },
@@ -21,7 +23,7 @@ const CatalogList = () => {
   const dispatch = useDispatch();
   const catalogData = useSelector(selectQuestionnaires);
   const { page, perPage } = useSelector(selectIsPagination);
-
+  const isLoading = useSelector(selectIsLoading);
   const [sortBy, setSortBy] = useState(sortOptions[0].value);
   const [sortOrder, setSortOrder] = useState('asc');
 
@@ -60,13 +62,19 @@ const CatalogList = () => {
         </label>
       </div>
 
-      <ul className={s.catalogList}>
-        {catalogData?.map(item => (
-          <CatalogItem key={item._id} dataItem={item} />
-        ))}
-      </ul>
+      {isLoading ? (
+        <div className={s.loaderWrap}>
+          <Loader />
+        </div>
+      ) : (
+        <ul className={s.catalogList}>
+          {catalogData?.map(item => (
+            <CatalogItem key={item._id} dataItem={item} />
+          ))}
+        </ul>
+      )}
 
-      <PaginationControls />
+      {!isLoading && <PaginationControls />}
     </div>
   );
 };
