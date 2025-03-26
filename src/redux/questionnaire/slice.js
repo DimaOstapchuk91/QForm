@@ -8,6 +8,10 @@ import {
 const initialState = {
   questionnaires: [],
   total: 0,
+  questionnaireAnswers: {
+    step: 0,
+    answers: {},
+  },
   pagination: {
     page: 1,
     perPage: 6,
@@ -31,8 +35,18 @@ const questionnairesSlice = createSlice({
         state.pagination.page = newPage;
       }
     },
-    clearState: state => {
-      state.oneQuestionnaire = false;
+    // clearState: state => {
+    //   state.oneQuestionnaire = false;
+    //   state.isLoading = false;
+    //   state.error = false;
+    // },
+    setQuestionnaireAnswers: (state, action) => {
+      console.log(action.payload);
+      console.log(state.questionnaireAnswers);
+      state.questionnaireAnswers = action.payload;
+    },
+    clearStateQuestionareAnwers: state => {
+      state.questionnaireAnswers = initialState.questionnaireAnswers;
       state.isLoading = false;
       state.error = false;
     },
@@ -89,6 +103,11 @@ const questionnairesSlice = createSlice({
   },
 });
 
-export const { setPage, clearState } = questionnairesSlice.actions;
+export const {
+  setPage,
+  clearState,
+  setQuestionnaireAnswers,
+  clearStateQuestionareAnwers,
+} = questionnairesSlice.actions;
 
 export const questionnairesReduser = questionnairesSlice.reducer;

@@ -65,6 +65,10 @@
   justify-content: center;
 }
 
+.questionCaunt {
+  margin-bottom: 12px;
+}
+
 .inputText {
   color: var(--component-gray);
   padding: 8px 16px;

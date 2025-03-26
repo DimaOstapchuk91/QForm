@@ -1,8 +1,16 @@
 import CatalogList from '../../components/CatalogList/CatalogList.jsx';
 import { NavLink } from 'react-router-dom';
 import s from './CatalogQPage.module.css';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { clearStateQuestionareAnwers } from '../../redux/questionnaire/slice.js';
 
 const CatalogQPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearStateQuestionareAnwers());
+  }, [dispatch]);
   return (
     <section className='container'>
       <div className={s.catalofWrap}>

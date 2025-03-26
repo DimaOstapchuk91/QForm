@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import {
   closestCenter,
   DndContext,
-  KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
@@ -18,9 +17,10 @@ import SortableItem from '../SortableItem/SortableItem.jsx';
 import {
   arrayMove,
   SortableContext,
-  sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
+import sprite from '../../assets/sprite.svg';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 const CreateQForm = () => {
   const navigate = useNavigate();
@@ -63,9 +63,6 @@ const CreateQForm = () => {
       activationConstraint: {
         distance: 10,
       },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
@@ -112,6 +109,7 @@ const CreateQForm = () => {
         sensors={sensors}
         onDragEnd={handleDragEnd}
         collisionDetection={closestCenter}
+        modifiers={[restrictToVerticalAxis]}
       >
         <SortableContext items={fields} strategy={verticalListSortingStrategy}>
           <ul className={s.questionList}>
@@ -147,6 +145,11 @@ const CreateQForm = () => {
                     >
                       Delete
                     </button>
+                    <span className={s.drag}>
+                      <svg className={s.iconDrug} width={20} height={20}>
+                        <use href={`${sprite}#icon-drag_indicator`} />
+                      </svg>
+                    </span>
                   </div>
 
                   {(questionTypes?.[index]?.questionType === 'radio' ||

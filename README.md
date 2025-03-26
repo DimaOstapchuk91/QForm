@@ -34,7 +34,7 @@ This web application allows users to create and fill out questionnaires. It incl
     - Time spent on the questionnaire
   - After submission, the answers are saved in the database.
 
-### Intermediate Level (Partially Completed)
+### Intermediate Level (Completed)
 
 - **All Basic Features**
 - **Additional Features**:
@@ -52,6 +52,6 @@ This web application allows users to create and fill out questionnaires. It incl
 
   - **Interactive Questionnaire Page**:
 
-    - Save progress: Users can resume the questionnaire from where they left off if they refresh the page (Not implemented).
+    - Save progress: Users can resume the questionnaire from where they left off if they refresh the page.
 
     ***

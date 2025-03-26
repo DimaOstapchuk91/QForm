@@ -6,11 +6,19 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import s from './Questionnaire.module.css';
 import { schemaAnswer } from '../../utils/validations.js';
 import { NavLink } from 'react-router-dom';
-import { clearState } from '../../redux/questionnaire/slice.js';
-import { selectIsLoading } from '../../redux/questionnaire/selectors.js';
+import {
+  clearState,
+  clearStateQuestionareAnwers,
+  setQuestionnaireAnswers,
+} from '../../redux/questionnaire/slice.js';
+import {
+  selectIsLoading,
+  selectQuestionnaireAnswers,
+} from '../../redux/questionnaire/selectors.js';
 import Loader from '../Loader/Loader.jsx';
 
 const Questionnaire = ({ dataItem }) => {
+  const answersStore = useSelector(selectQuestionnaireAnswers);
   const { name, description, questions, _id } = dataItem;
   const dispatch = useDispatch();
   const [step, setStep] = useState(0);
@@ -23,6 +31,7 @@ const Questionnaire = ({ dataItem }) => {
     control,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors, isValid },
     watch,
   } = useForm({
@@ -38,11 +47,32 @@ const Questionnaire = ({ dataItem }) => {
     },
   });
 
+  useEffect(() => {
+    if (answersStore) {
+      setStep(answersStore.step);
+      reset({ answers: answersStore.answers });
+    }
+  }, []);
+
+  const handleClickNext = () => {
+    setStep(step + 1);
+    if (step > 0) {
+      const currentAnswers = watch('answers');
+
+      dispatch(
+        setQuestionnaireAnswers({
+          step,
+          answers: { ...currentAnswers },
+        })
+      );
+    }
+  };
+
   const onSubmit = data => {
+    dispatch(clearStateQuestionareAnwers());
     dispatch(postAnswer({ questionnaireId: _id, answers: data.answers }));
 
     setAnswers(data.answers);
-
     setShowResults(true);
   };
 
@@ -113,6 +143,7 @@ const Questionnaire = ({ dataItem }) => {
           <p className={s.formDescription}>
             {description.charAt(0).toUpperCase() + description.slice(1)}
           </p>
+          <p className={s.questionCaunt}>Question: {step + 1}</p>
 
           <div className={s.questionsWrap}>
             <p className={s.questionText}>{currentQuestion.questionText}</p>
@@ -162,7 +193,11 @@ const Questionnaire = ({ dataItem }) => {
                           {...field}
                           type='checkbox'
                           value={option}
-                          checked={field.value?.includes(option)}
+                          checked={
+                            Array.isArray(field.value)
+                              ? field.value.includes(option)
+                              : false
+                          }
                           onChange={e => {
                             const isChecked = e.target.checked;
                             let newValue = isChecked
@@ -192,7 +227,7 @@ const Questionnaire = ({ dataItem }) => {
               <button
                 className={s.questionBtn}
                 type='button'
-                onClick={() => setStep(step + 1)}
+                onClick={handleClickNext}
                 disabled={isNextDisabled}
               >
                 Next

@@ -16,7 +16,7 @@ import { questionnairesReduser } from './questionnaire/slice.js';
 const persistQuestionnaires = {
   key: 'questionnaires',
   storage,
-  whitelist: ['oneQuestionnaire, answers'],
+  whitelist: ['questionnaireAnswers'],
 };
 
 const persistedQuestionnairesReducer = persistReducer(

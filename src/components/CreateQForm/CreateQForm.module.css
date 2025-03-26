@@ -28,7 +28,6 @@
   width: 100%;
   outline: none;
   resize: none;
-
   pointer-events: auto;
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -142,4 +141,17 @@
   border-radius: 200px;
   cursor: pointer;
   transition: background-color 0.3s ease-out, background-size 0.3s ease-out;
+}
+
+.drag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: var(--bg-contrast);
+}
+
+.iconDrug {
+  fill: var(--text-color);
 }
