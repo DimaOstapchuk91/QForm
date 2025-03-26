@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   deleteQuestionnaires,
   getQuestionnaires,
   getQuestionnairesById,
+  postQuestionnaire,
 } from './operations.js';
 
 const initialState = {
@@ -53,12 +54,7 @@ const questionnairesSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(getQuestionnaires.pending, state => {
-        state.error = false;
-        state.isLoading = true;
-      })
       .addCase(getQuestionnaires.fulfilled, (state, action) => {
-        state.isLoading = false;
         const {
           data,
           page,
@@ -78,28 +74,50 @@ const questionnairesSlice = createSlice({
           hasPreviousPage,
         };
       })
-      .addCase(getQuestionnaires.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
       .addCase(getQuestionnairesById.fulfilled, (state, action) => {
         state.oneQuestionnaire = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(getQuestionnairesById.pending, state => {
-        state.error = false;
-        state.isLoading = true;
-      })
-      .addCase(getQuestionnairesById.rejected, state => {
-        state.isLoading = false;
-        state.error = true;
       })
       .addCase(deleteQuestionnaires.fulfilled, (state, action) => {
         state.questionnaires = state.questionnaires.filter(
           item => item._id !== action.payload
         );
-        state.isLoading = false;
-      });
+      })
+      .addMatcher(
+        isAnyOf(
+          getQuestionnaires.pending,
+          deleteQuestionnaires.pending,
+          getQuestionnairesById.pending,
+          postQuestionnaire.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getQuestionnaires.fulfilled,
+          deleteQuestionnaires.fulfilled,
+          getQuestionnairesById.fulfilled,
+          postQuestionnaire.fulfilled
+        ),
+        state => {
+          state.isLoading = false;
+          state.error = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getQuestionnaires.rejected,
+          deleteQuestionnaires.rejected,
+          getQuestionnairesById.rejected,
+          postQuestionnaire.rejected
+        ),
+        state => {
+          state.isLoading = false;
+          state.error = true;
+        }
+      );
   },
 });
 

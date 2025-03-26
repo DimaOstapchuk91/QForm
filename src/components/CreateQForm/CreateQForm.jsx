@@ -2,7 +2,7 @@ import { Controller, useFieldArray, useForm, useWatch } from 'react-hook-form';
 import { postQuestionnaire } from '../../redux/questionnaire/operations.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { questionnaireCreateSchema } from '../../utils/validations.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './CreateQForm.module.css';
 import OptionsField from '../OptionsField/OptionsField.jsx';
 import { useNavigate } from 'react-router-dom';
@@ -21,10 +21,13 @@ import {
 } from '@dnd-kit/sortable';
 import sprite from '../../assets/sprite.svg';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { selectIsLoading } from '../../redux/questionnaire/selectors.js';
+import Loader from '../Loader/Loader.jsx';
 
 const CreateQForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const {
     control,
@@ -32,6 +35,7 @@ const CreateQForm = () => {
     handleSubmit,
     setValue,
     formState: { errors },
+    watch,
   } = useForm({
     resolver: yupResolver(questionnaireCreateSchema),
     defaultValues: {
@@ -53,6 +57,10 @@ const CreateQForm = () => {
     control,
     name: 'questions',
   });
+
+  const currentAnswers = watch('questions');
+
+  console.log(currentAnswers);
 
   const onSubmit = credentials => {
     dispatch(postQuestionnaire({ credentials, navigate }));
@@ -121,9 +129,13 @@ const CreateQForm = () => {
                       <p className={s.inputName}>Question {index + 1}</p>
                       <input
                         key={item.id}
+                        name='questionText'
                         className={s.inputForm}
                         {...register(`questions[${index}].questionText`)}
                       />
+                      {errors.questionText && (
+                        <p>{errors.questionText.message}</p>
+                      )}
                     </label>
                     <label>
                       <Controller
@@ -175,9 +187,13 @@ const CreateQForm = () => {
       </DndContext>
 
       <div className={s.submitWrap}>
-        <button className={s.submitBtn} type='submit'>
-          Submit Questionnaire
-        </button>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <button className={s.submitBtn} type='submit'>
+            Submit Questionnaire
+          </button>
+        )}
       </div>
     </form>
   );
