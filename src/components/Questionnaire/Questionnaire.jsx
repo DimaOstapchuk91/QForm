@@ -1,12 +1,14 @@
 import { Controller, useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postAnswer } from '../../redux/questionnaire/operations.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import s from './Questionnaire.module.css';
 import { schemaAnswer } from '../../utils/validations.js';
 import { NavLink } from 'react-router-dom';
 import { clearState } from '../../redux/questionnaire/slice.js';
+import { selectIsLoading } from '../../redux/questionnaire/selectors.js';
+import Loader from '../Loader/Loader.jsx';
 
 const Questionnaire = ({ dataItem }) => {
   const { name, description, questions, _id } = dataItem;
@@ -15,6 +17,7 @@ const Questionnaire = ({ dataItem }) => {
   const [startTime] = useState(Date.now());
   const [showResults, setShowResults] = useState(false);
   const [answers, setAnswers] = useState({});
+  const isLoading = useSelector(selectIsLoading);
 
   const {
     control,
@@ -98,6 +101,10 @@ const Questionnaire = ({ dataItem }) => {
             </NavLink>
           </div>
         </div>
+      ) : !isLoading ? (
+        <div className={s.loaderWrap}>
+          <Loader />
+        </div>
       ) : (
         <>
           <h1 className={s.formTitle}>
@@ -144,7 +151,7 @@ const Questionnaire = ({ dataItem }) => {
             </div>
             <div className={s.questionRadio}>
               {currentQuestion.questionType === 'checkbox' &&
-                currentQuestion.options.map((option, index) => (
+                currentQuestion?.options.map((option, index) => (
                   <label key={index}>
                     <Controller
                       name={`answers.${currentQuestion._id}`}
@@ -159,8 +166,10 @@ const Questionnaire = ({ dataItem }) => {
                           onChange={e => {
                             const isChecked = e.target.checked;
                             let newValue = isChecked
-                              ? [...field.value, option]
-                              : field.value.filter(val => val !== option);
+                              ? [...(field.value || []), option]
+                              : (field.value || []).filter(
+                                  val => val !== option
+                                );
                             field.onChange(newValue);
                           }}
                         />
