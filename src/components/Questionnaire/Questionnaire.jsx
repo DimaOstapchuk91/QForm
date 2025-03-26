@@ -101,7 +101,7 @@ const Questionnaire = ({ dataItem }) => {
             </NavLink>
           </div>
         </div>
-      ) : !isLoading ? (
+      ) : isLoading ? (
         <div className={s.loaderWrap}>
           <Loader />
         </div>
