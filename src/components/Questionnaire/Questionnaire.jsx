@@ -16,6 +16,7 @@ import {
   selectQuestionnaireAnswers,
 } from '../../redux/questionnaire/selectors.js';
 import Loader from '../Loader/Loader.jsx';
+import { successfullyToast } from '../../utils/toast.js';
 
 const Questionnaire = ({ dataItem }) => {
   const answersStore = useSelector(selectQuestionnaireAnswers);
@@ -74,13 +75,17 @@ const Questionnaire = ({ dataItem }) => {
 
     setAnswers(data.answers);
     setShowResults(true);
+    successfullyToast('Form has been submitted');
   };
 
   const currentQuestion = questions[step];
   const currentAnswer = watch(`answers.${currentQuestion._id}`);
 
   useEffect(() => {
-    if (currentQuestion.questionType === 'text' && !showResults) {
+    if (
+      currentQuestion.questionType === 'text' ||
+      (currentQuestion.questionType === 'radio' && !showResults)
+    ) {
       setValue(`answers.${currentQuestion._id}`, '');
     }
   }, [step, setValue, currentQuestion, showResults]);
